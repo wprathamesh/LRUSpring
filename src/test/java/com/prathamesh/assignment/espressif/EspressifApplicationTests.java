@@ -35,7 +35,7 @@ class EspressifApplicationTests {
 	void addItems() {
 		try {
 			listItems.stream().forEach(player -> {
-				template.getForObject(URL + ADD_ITEM + "?item=" + player, Boolean.class);
+				template.getForObject(URL + ADD_ITEM + "?item=" + player, String.class);
 			});
 			logger.info("Items got inserted successsfully !!!");
 		} catch (Exception e) {

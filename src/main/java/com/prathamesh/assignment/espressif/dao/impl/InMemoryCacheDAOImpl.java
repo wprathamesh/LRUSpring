@@ -54,7 +54,7 @@ public class InMemoryCacheDAOImpl implements LRUCacheDAO {
 	}
 
 	@Override
-	public boolean addItem(String item) {
+	public String addItem(String item) {
 		logger.info("Entering synchronized block");
 		synchronized (this) {
 
@@ -64,7 +64,7 @@ public class InMemoryCacheDAOImpl implements LRUCacheDAO {
 						inMemoryData.add(0, item);
 						inMemoryCacheOrder.put(item, item);
 						logger.info("Element added " + item);
-						return true;
+						return "Item "+item+" added";
 					}
 
 				} else {
@@ -72,13 +72,13 @@ public class InMemoryCacheDAOImpl implements LRUCacheDAO {
 					inMemoryData.add(0, item);
 					inMemoryCacheOrder.put(item, item);
 					logger.info("Element added " + item);
-					return true;
+					return "Item "+item+" added";
 				}
 			}
 
 		}
 		logger.info("Exited synchronized block");
-		return false;
+		return "Item not added";
 
 	}
 
